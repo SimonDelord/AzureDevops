@@ -2,10 +2,18 @@ jobs:
 - job: myjob
   displayName: MyJob
   pool:
-    vmImage: 'windows-latest'
+    vmImage: 'ubuntu-latest'
   steps:
+  - script: echo Hello, world!
+  
   # Install oc so that it can be used within a 'script' or bash 'task'
-  - task: oc-setup@2
-    inputs:
+  - task: oc-cmd@2
+    inputs: 
+      connectionType: 'OpenShift Connection Service'
       openshiftService: 'azuredevops'
-      version: '4.10'
+      cmd: 'status'
+      
+#  - task: oc-setup@2
+#    inputs:
+#      openshiftService: 'azuredevops'
+#      version: '4.10'
