@@ -17,7 +17,8 @@ jobs:
   - task: oc-cmd@2
     inputs:
       openshiftService: 'azuredevops'
-      cmd: 'oc start-build nodejs-ex --follow'
+#      cmd: 'oc start-build nodejs-ex --follow'
+      cmd: 'oc process eap-cd-basic-s2i -n openshift | oc create -f -'
       uselocalOc: true
   - task: oc-cmd@2
     inputs:
