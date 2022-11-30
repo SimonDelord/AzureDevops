@@ -1,0 +1,21 @@
+jobs:
+- job: demo
+  displayName: MyDemo
+  pool:
+    name: 'Default'
+  steps:
+  - task: oc-cmd@2
+    inputs:
+      openshiftService: 'azuredevops'
+      cmd: 'oc new-project simon'
+      uselocalOc: true
+  - task: oc-cmd@2
+    inputs:
+      openshiftService: 'azuredevops'
+      cmd: 'oc start-build nodejs-ex --follow'
+      uselocalOc: true
+  - task: oc-cmd@2
+    inputs:
+      openshiftService: 'azuredevops'
+      cmd: 'oc status'
+      uselocalOc: true
